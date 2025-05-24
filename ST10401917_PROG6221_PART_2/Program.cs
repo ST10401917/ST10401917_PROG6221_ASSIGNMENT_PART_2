@@ -135,7 +135,29 @@ _________        ___.                         .__            __ ___.           _
         }
 
 
+        static void PlayGreetingAudio(string filePath) // method for the audio
+        {
+            try
+            {
+                string fullPath = Path.Combine(Directory.GetCurrentDirectory(), filePath); // get the path of the code
 
+                if (File.Exists(fullPath)) // checks to see if the path for the audio exists
+                {
+                    SoundPlayer player = new SoundPlayer(fullPath);
+                    player.PlaySync(); // plays the sound
+                }
+                else
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine($"Error: The file '{filePath}' was not found."); // if the file is not found
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine($"Error playing audio: {ex.Message}");
+            }
+        }
 
 
         static void DisplayTipOfTheDay()  // displaying the tip of the day
