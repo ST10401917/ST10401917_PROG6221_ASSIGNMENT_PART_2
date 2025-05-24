@@ -382,6 +382,28 @@ _________        ___.                         .__            __ ___.           _
                 return;
             }
 
+            // memory and recall feature
+            if (foundResponse && favoriteTopic != null && lowerInput.Contains(favoriteTopic.ToLower()))
+            {
+                responseText += $" Since you're interested in {favoriteTopic}, remember to stay updated on the latest best practices.";
+            }
+
+
+
+
+            // If no valid match
+            if (!foundResponse)
+            {
+                responseText = "Sorry, I didn't understand. Type 'help' to see what you can ask.";
+                if (favoriteTopic != null)
+                {
+                    responseText += $" By the way, since you're interested in {favoriteTopic}, I recommend exploring that topic more!";
+                }
+            }
+
+            // SINGLE FINAL RESPONSE
+            RespondWithSpeech(responseText);
+
 
         }
 
