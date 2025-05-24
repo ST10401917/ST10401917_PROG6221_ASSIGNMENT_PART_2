@@ -174,5 +174,36 @@ _________        ___.                         .__            __ ___.           _
             Console.WriteLine();
         }
 
+
+
+
+        static void SaveChatHistory() // saves the last chat history to a text file
+        {
+            string path = "chat_history.txt";
+            File.WriteAllLines(path, chatHistory);
+            Console.ForegroundColor = ConsoleColor.Gray;
+            Console.WriteLine($"Chat history saved to {path}");
+        }
+
+        static void RespondWithSpeech(string response)
+        {
+            LoadingEffect();
+            Console.ForegroundColor = ConsoleColor.Green;
+            TypingEffect($"ChatBot: {response}\n");
+
+            try
+            {
+                synth.Speak(response); // Reliable speech output
+            }
+            catch (Exception ex)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine($"TTS Error: {ex.Message}");
+            }
+
+            chatHistory.Add($"ChatBot: {response}");
+        }
+
+
     }
 }
