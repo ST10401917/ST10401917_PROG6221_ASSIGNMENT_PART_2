@@ -153,6 +153,26 @@ _________        ___.                         .__            __ ___.           _
             RespondWithSpeech($"Security Tip of the Day: {tips[tipIndex]}");
         }
 
+        static void TypingEffect(string message, int delay = 20) // the typing effect for the chat
+        {
+            foreach (char c in message)
+            {
+                Console.Write(c);
+                Thread.Sleep(delay);
+            }
+        }
+
+        static void LoadingEffect()
+        {
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.Write("ChatBot");
+            for (int i = 0; i < 2; i++)
+            {
+                Thread.Sleep(150);
+                Console.Write(".");
+            }
+            Console.WriteLine();
+        }
 
     }
 }
