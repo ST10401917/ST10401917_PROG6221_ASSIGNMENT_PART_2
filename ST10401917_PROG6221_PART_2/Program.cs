@@ -1,5 +1,4 @@
 ﻿using System;
-using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -133,6 +132,53 @@ _________        ___.                         .__            __ ___.           _
             // Save chat history to a text file when exiting
             SaveChatHistory();
         }
+
+
+        static void HandleUserQuery(string input, string userName) // If a valid command is typed, the bot outputs the appropriate response.
+        {
+            string responseText = "";
+            bool foundResponse = false;
+
+
+            chatHistory.Add($"{userName}: {input}");
+
+
+            // single responses for quick matches
+            Dictionary<string, string> responses = new Dictionary<string, string>
+            {
+                { "password", "Create strong passwords by using a mix of letters, numbers, and symbols. Avoid using personal info!" },
+
+
+                {"explain", "In today's fully digital age, cyber attacks are more common than ever. So that is where cybersecurity comes to play in. " +
+                 "Protecting systems, networks, and applications from online assaults is called cybersecurity. " +
+                 "Usually cyber criminals will target sensitive information to gain access to your personal property " +
+                 "and start alterating infomaton on it, or destruction; or seeking financial from the vicitum via ransom, these are cyberattacks "},
+
+
+                { "how are you", " Hey I am doing good. Hope you doing good as well :) How can I assist you with cybersecurity today?" },
+                { "what is your purpose", "I am a friendly chatbot and I am here to help you learn more about cybersecurity :)" },
+                { "what can i ask you about", "You can ask me about password safety, phishing, protecting personal data, and general cybersecurity guidance." },
+                { "help", "You can ask about passwords, phishing, how to protection yourself, or explain what is cycbersecuirty" }
+            };
+
+            // Keyword groups for multi-keyword detection
+            Dictionary<string, List<string>> keywordGroups = new Dictionary<string, List<string>>()
+            {
+                { "password", new List<string> { "password", "strong password", "secure password" } },
+
+                { "explain", new List<string> { "tell", "what" } },
+                { "signs", new List<string> { "hacked", "sign" } },
+                { "types", new List<string> { "type", "attack", "different" } },
+                { "protect", new List<string> { "safe", "protection" } },
+
+                { "phishing", new List<string> { "phishing", "phishing emails" } },
+            };
+        }
+
+
+
+
+
 
 
         static void PlayGreetingAudio(string filePath) // method for the audio
