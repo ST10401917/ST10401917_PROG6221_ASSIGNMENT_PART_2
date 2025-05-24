@@ -235,6 +235,154 @@ _________        ___.                         .__            __ ___.           _
 
 
 
+            // the if statements will check what the user has entered 
+            string lowerInput = input.ToLower();
+
+            if (lowerInput.Contains("phishing"))
+            {
+                responseText = phishingTips[random.Next(phishingTips.Count)]; // the random count will display the random responses
+                foundResponse = true;
+            }
+
+            else if (lowerInput.Contains("password"))
+            {
+                responseText = passwordTips[random.Next(passwordTips.Count)];
+                foundResponse = true;
+            }
+
+            // Codetesting tips (random)
+            else if (lowerInput.Contains("types"))
+            {
+                responseText = typesTip[random.Next(typesTip.Count)];
+                foundResponse = true;
+            }
+
+            else if (lowerInput.Contains("signs"))
+            {
+                responseText = signsTip[random.Next(signsTip.Count)];
+                foundResponse = true;
+            }
+
+            else if (lowerInput.Contains("protect"))
+            {
+                responseText = protectTypes[random.Next(protectTypes.Count)];
+                foundResponse = true;
+            }
+
+
+            // if the user wants to find out about a topic. It checks the user responses 
+
+            else if (lowerInput.Contains("more") || lowerInput.Contains("explain") || lowerInput.Contains("why") || lowerInput.Contains("what do you mean"))
+            {
+                switch (lastTopic)
+                {
+                    case "phishing": // if the user types phishing, the chat will display more phishing facts 
+                        responseText = phishingTips[random.Next(phishingTips.Count)];
+                        foundResponse = true;
+                        break;
+                    case "signs":
+                        responseText = signsTip[random.Next(signsTip.Count)];
+                        foundResponse = true;
+                        break;
+                    case "types":
+                        responseText = typesTip[random.Next(typesTip.Count)];
+                        foundResponse = true;
+                        break;
+                    case "protect":
+                        responseText = protectTypes[random.Next(protectTypes.Count)];
+                        foundResponse = true;
+                        break;
+                    default:
+                        responseText = "Could you please clarify what you'd like to know more about?";
+                        foundResponse = true;
+                        break;
+                }
+            }
+
+
+
+
+
+            // Direct match from responses
+            else
+            {
+                foreach (var entry in responses)
+                {
+                    if (lowerInput.Contains(entry.Key))
+                    {
+                        // Special handling if it's codetesting
+                        if (entry.Key == "types")
+                        {
+                            responseText = typesTip[random.Next(typesTip.Count)];
+                        }
+                        else
+                        {
+                            responseText = entry.Value;
+                        }
+
+                        foundResponse = true;
+                        break;
+                    }
+                }
+
+                // Synonym check
+                if (!foundResponse)
+                {
+                    foreach (var group in keywordGroups)
+                    {
+                        foreach (var keyword in group.Value)
+                        {
+                            if (lowerInput.Contains(keyword))
+                            {
+                                if (group.Key == "types")
+                                {
+                                    responseText = typesTip[random.Next(typesTip.Count)];
+                                }
+                                else
+                                {
+                                    responseText = responses[group.Key];
+                                }
+
+                                foundResponse = true;
+                                break;
+                            }
+                        }
+                        if (foundResponse) break;
+                    }
+                }
+            }
+
+
+
+            // the sentiment detection system
+            List<string> SentimentworriedKeywords = new List<string> { "worried", "scared", "nervous", "anxious", "concerned", "afraid" };
+            List<string> SentimentcuriousKeywords = new List<string> { "curious", "interested", "wondering", "want to know", "unsure" };
+            List<string> SentimentfrustratedKeywords = new List<string> { "frustrated", "angry", "upset", "irritated", "annoyed" };
+
+
+
+
+            // Direct emotion response (handle when input is just a feeling)
+            if (SentimentworriedKeywords.Any(input.Contains))
+            {
+                responseText = "It's completely understandable to feel that way. Scammers can be very convincing.";
+                RespondWithSpeech(responseText);
+                return;
+            }
+            else if (SentimentcuriousKeywords.Any(input.Contains))
+            {
+                responseText = "I'm glad you're curious! Cybersecurity is a great topic to learn about. What would you like to know more about?";
+                RespondWithSpeech(responseText);
+                return;
+            }
+            else if (SentimentfrustratedKeywords.Any(input.Contains))
+            {
+                responseText = "I hear you. It can be frustrating sometimes. Let's break things down or try a different approach together.";
+                RespondWithSpeech(responseText);
+                return;
+            }
+
+
         }
 
 
