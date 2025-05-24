@@ -137,5 +137,22 @@ _________        ___.                         .__            __ ___.           _
 
 
 
+
+        static void DisplayTipOfTheDay()  // displaying the tip of the day
+        {
+            string[] tips = new string[]
+            {
+            "More general cyber attacks: Amazon now daily monitors hundreds of millions more possible cyber hazards. In only six or seven months, it went from 100 million to 750 million threats each day.",
+            "More DDoS attacks: in contrast to last year, Distributed Denial of Service (DDoS) assaults grew by 46% in the first half of 2024. Tech and gaming took the worst blows.",
+            "More attacks of ransomware: These days big ransomware assaults are much more frequent. In 2011, Only Five major assaults annually were reported. But every day in 2024, 20 to 25 big ransomware assaults occurred which is super scary."
+            };
+
+            int tipIndex = random.Next(tips.Length);
+            LoadingEffect();
+            Console.ForegroundColor = ConsoleColor.Green;
+            RespondWithSpeech($"Security Tip of the Day: {tips[tipIndex]}");
+        }
+
+
     }
 }
