@@ -173,6 +173,68 @@ _________        ___.                         .__            __ ___.           _
 
                 { "phishing", new List<string> { "phishing", "phishing emails" } },
             };
+
+
+            List<string> passwordTips = new List<string>()
+            {
+                "A strong password is your first line of defense. Make sure it’s long—at least 12 characters—and includes a mix of uppercase and lowercase letters, numbers, and special characters.",
+                "Using the same password on multiple accounts is risky. If one account is compromised, all others could be too. Always use unique passwords.",
+                "It’s tough to remember many complex passwords. That’s why using a password manager can help—it's secure and remembers your passwords for you.",
+                "Avoid sharing your passwords with anyone, and never store them in plain text or on sticky notes. Stay safe by keeping them private and secure.",
+                "If you notice suspicious activity on your account or get login alerts from unknown devices, change your password immediately and enable two-factor authentication.",
+                "It's a good habit to update your passwords every few months, especially for important accounts like email, banking, and social media.",
+                "Consider using a passphrase instead of a single word. Something like 'Sunshine$Eats!99Blueberries' is both strong and easier to remember.",
+                "No worries if your current passwords aren’t perfect. You can start improving them one step at a time—every bit of effort adds up to better security!"
+            };
+
+
+
+            // Random phishing tips for varied response
+            List<string> phishingTips = new List<string>()
+            {
+                "Be cautious of emails asking for personal information. Scammers often disguise themselves as trusted organisations.",
+                "Don't click on links from unknown senders; hover over links to check their actual destination.",
+                "Look for poor grammar and spelling mistakes in emails, which are common signs of phishing attempts.",
+                "If an email urges immediate action or threats, double-check with the company directly.",
+                "Keep your software and anti-virus updated to protect against phishing exploits."
+            };
+
+            // Random signs tips for varied response
+            List<string> signsTip = new List<string>()
+            {
+                "Files have changed without your knowledge or have been erased",
+                "You notice that passwords have turned unexpectedly different",
+                "Unidentified software shows up or starts installation unexpectedly. When you are not using the computer, it is frequently connecting to the internet.",
+                "Your online searches are being redirected." ,
+                "Without your interaction, additional browser windows may show or turn off. Unseen anti-virus software scans randomly pop up." ,
+                "Your web browser gets more toolbars" ,
+                "Money vanishes from your bank account. You get bills or see payments made for transactions you didn't make"
+
+            };
+
+
+            // Random protection tips for varied response
+            List<string> protectTypes = new List<string>()
+            {
+                "1. Use strong and unique passwords\nCreate long passwords with a mix of letters, numbers, and symbols. Avoid reusing the same password across sites to prevent widespread breaches.",
+
+                "2. Phishing scams\nPhishing emails often create urgency or fear to trick you. Watch out for messages asking you to verify accounts or avoid penalties—always double-check with the source.",
+
+                "3. Safe Browsing\nKeep antivirus software updated, avoid suspicious links, and look for secure websites with 'https' and a padlock icon. Use two-factor authentication when possible."
+            };
+
+            // different types of random attacks 
+            List<string> typesTip = new List<string>()
+            {
+                "DoS and DDoS attacks" ,
+                "Phishing attacks" ,
+                "Ransomware" ,
+                "Password attacks" ,
+                "Trojan horses"
+            };
+
+
+
         }
 
 
