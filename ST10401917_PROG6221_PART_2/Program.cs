@@ -11,7 +11,7 @@ namespace ST10401917_PROG6221_PART_2
     class Program
     {
         static List<string> chatHistory = new List<string>();
-        static SpeechSynthesizer synth = new SpeechSynthesizer
+        static SpeechSynthesizer synth = new SpeechSynthesizer // this is for the voice chat 
         {
             Volume = 100,
             Rate = 0
@@ -74,6 +74,8 @@ _________        ___.                         .__            __ ___.           _
             Console.ForegroundColor = ConsoleColor.White;
             favoriteTopic = Console.ReadLine()?.Trim().ToLower();
 
+
+            // memory and recall feature
             if (!string.IsNullOrEmpty(favoriteTopic))
             {
                 LoadingEffect();
@@ -81,7 +83,7 @@ _________        ___.                         .__            __ ___.           _
             }
             else
             {
-                RespondWithSpeech("Don't have one? No problem! We will explore more cybersecuirty together");
+                RespondWithSpeech("Don't have one? No problem! We will explore more cybersecurity topic together");
                 favoriteTopic = null; // reset if empty
             }
 
@@ -202,11 +204,11 @@ _________        ___.                         .__            __ ___.           _
             // Random signs tips for varied response
             List<string> signsTip = new List<string>()
             {
-                "Files have changed without your knowledge or have been erased",
-                "You notice that passwords have turned unexpectedly different",
-                "Unidentified software shows up or starts installation unexpectedly. When you are not using the computer, it is frequently connecting to the internet.",
+                "Your files on your pc have changed without your knowledge or have been erased",
+                "You notice that your passwords have changed unexpectedly",
+                "Unknown software shows up or starts installation unexpectedly on your pc. When you are not using the computer, it is frequently connecting to the internet.",
                 "Your online searches are being redirected." ,
-                "Without your interaction, additional browser windows may show or turn off. Unseen anti-virus software scans randomly pop up." ,
+                "Without your interaction, additional browser windows may show up or closes. Unseen anti-virus software scans randomly pop up." ,
                 "Your web browser gets more toolbars" ,
                 "Money vanishes from your bank account. You get bills or see payments made for transactions you didn't make"
 
@@ -216,21 +218,19 @@ _________        ___.                         .__            __ ___.           _
             // Random protection tips for varied response
             List<string> protectTypes = new List<string>()
             {
-                "1. Use strong and unique passwords\nCreate long passwords with a mix of letters, numbers, and symbols. Avoid reusing the same password across sites to prevent widespread breaches.",
-
-                "2. Phishing scams\nPhishing emails often create urgency or fear to trick you. Watch out for messages asking you to verify accounts or avoid penalties—always double-check with the source.",
-
-                "3. Safe Browsing\nKeep antivirus software updated, avoid suspicious links, and look for secure websites with 'https' and a padlock icon. Use two-factor authentication when possible."
+                "Use strong and unique passwords. Create long passwords with a mix of letters, numbers, and symbols. Avoid reusing the same password across sites to prevent widespread breaches.",
+                "Phishing scams. Phishing emails often create urgency or fear to trick you. Watch out for messages asking you to verify accounts or avoid penalties—always double-check with the source.",
+                "Safe Browsing. Keep antivirus software updated, avoid suspicious links, and look for secure websites with 'https' and a padlock icon. Use two-factor authentication when possible."
             };
 
             // different types of random attacks 
             List<string> typesTip = new List<string>()
             {
-                "DoS and DDoS attacks" ,
-                "Phishing attacks" ,
-                "Ransomware" ,
-                "Password attacks" ,
-                "Trojan horses"
+                "DoS and DDoS attacks – These attacks overload a server or your network with traffic, causing it to crash or become unavailable.",
+                "Phishing attacks – Fake messages or websites tricks you into giving away personal or financial information.",
+                "Ransomware – A type of malware that locks your files and demands payment to restore access.",
+                "Password attacks – Cybercriminals try to steal or guess your passwords to access accounts.",
+                "Trojan horses – Malicious software disguised as a normal file or app, which can secretly damage or control your system."
             };
 
 
